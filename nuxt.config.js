@@ -47,8 +47,15 @@ module.exports = {
   buildModules: [
     '@nuxtjs/vuetify',
   ],
+  css: [
+    'normalize.css/normalize.css',
+    // { src: 'assets/styles/layout/main.scss', lang: 'scss' },
+  ],
+  extractCSS: true,
   modules: [
     '@nuxtjs/style-resources',
+    '@nuxtjs/proxy',
+    'cookie-universal-nuxt',
     ['nuxt-i18n', {
       defaultLocale: 'ru',
       locales: [{
@@ -71,4 +78,32 @@ module.exports = {
       },
     }],
   ],
+  plugins: [
+    'plugins/api-inject.js',
+    'plugins/onAppInit.js',
+    'plugins/mask.js',
+  ],
+  vuetify: {
+    theme: {
+      themes: {
+        light: {
+          primary: '#dd5145',
+          secondary: '#424242',
+          accent: '#82B1FF',
+          error: '#FF5252',
+          info: '#2196F3',
+          success: '#4CAF50',
+          warning: '#FFC107',
+        },
+      },
+    },
+  },
+  proxy: {
+    '/api': {
+      target: 'http://35.246.141.227/api',
+      secure: false,
+      changeOrigin: true,
+      pathRewrite: { '^/api': '' },
+    },
+  },
 };

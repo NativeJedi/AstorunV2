@@ -91,5 +91,11 @@
   "form": {
     "iagree": "I agree with",
     "agreement": "data processing rules"
+  },
+  "label": {
+    "size": "Size"
+  },
+  "placeholder": {
+    "products": "There are no goods by your request"
   }
 }

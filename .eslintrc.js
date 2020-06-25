@@ -21,6 +21,7 @@ module.exports = {
     'linebreak-style': 0,
     'semi': ['error', 'always'],
     'import/extensions': ['error', 'never'],
+    'import/prefer-default-export': 'off',
     'nuxt/no-cjs-in-config': 'off',
     'import/no-extraneous-dependencies': ['error', {'packageDir': ['./', './node_modules/@nuxt/vue-app']}],
     'comma-dangle': ['error', 'always-multiline'],
@@ -40,8 +41,8 @@ module.exports = {
     ],
     'no-plusplus': ['error', { 'allowForLoopAfterthoughts': true }],
     'no-shadow': ['error', { builtinGlobals: false, hoist: 'functions', allow: ['state'] }],
-    'import/resolver': {
-      webpack: './webpack.config.js',
-    },
+  },
+  settings: {
+    'import/resolver': 'nuxt',
   },
 };

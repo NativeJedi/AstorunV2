@@ -2,15 +2,15 @@
   <section class="main-wrapper">
     <div class="container">
       <nuxt-link
-        :to="{ name: 'index' }"
+        :to="localePath({ name: 'index' })"
         class="logo-link">
         <img
-          src="~assets/images/logo.png"
+          src="/images/logo.png"
           alt="Astorun">
       </nuxt-link>
       <nav class="main-nav">
         <nuxt-link
-          :to="{ name: 'shop' }"
+          :to="localePath({ name: 'shop' })"
           class="main-nav__link"
         >{{ $t('links.shop') }}</nuxt-link>
         <nuxt-link
@@ -26,37 +26,29 @@
           class="main-nav__link"
         >{{ $t('links.contacts') }}</nuxt-link>
       </nav>
-      <div class="languages btn-group">
-        <nuxt-link
-          v-for="locale in availableLocales"
-          :key="locale.code"
-          :to="switchLocalePath(locale.code)"
-          :class="['languages__btn', {'is-active': activeLocaleCode === locale.code}]"
-        >{{ locale.code }}</nuxt-link>
-      </div>
+
+      <app-locales class="main-languages"/>
     </div>
   </section>
 </template>
 
 <script>
-export default {
-  computed: {
-    availableLocales() {
-      return this.$i18n.locales;
-    },
+import AppLocales from '~/components/AppLocales';
 
-    activeLocaleCode() {
-      return this.availableLocales.find((i) => i.code !== this.$i18n.locale)?.code;
-    },
+export default {
+
+  components: {
+    AppLocales,
   },
+
 };
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
   .main-wrapper {
     @extend %bg-cover !optional;
     background-image: linear-gradient(to left, rgba(#000, 0.5), rgba(#000, 0.5)),
-    url('~@/assets/images/bg1.jpg');
+    url('~@/static/images/bg1.jpg');
     text-align: center;
     color: #fff;
 
@@ -90,9 +82,9 @@ export default {
     }
   }
 
-  .languages {
+  .main-languages {
     margin-top: auto;
-    &__btn {
+    .app-locale-btn {
       text-decoration: none;
       color: #fff;
       font-size: 25px;
@@ -106,6 +98,15 @@ export default {
         border-bottom: 2px solid $main-color;
         color: $main-color;
       }
+    }
+  }
+
+  .logo-link {
+    display: block;
+    max-width: 250px;
+    margin: 0 auto 20px auto;
+    @media only screen and (max-width : 767px) {
+      max-width: 200px;
     }
   }
 </style>
