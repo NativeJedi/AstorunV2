@@ -38,7 +38,6 @@ const mutations = {
       ? addOrderWithQuantity(state.orders, order)
       : [{ ...order, quantity: 1 }];
 
-    console.log(orders);
     setOrders.call(this, state, orders);
   },
 

@@ -85,7 +85,9 @@ export default {
     display: grid;
     grid-template-columns: 120px 1fr 24px;
     padding: 20px;
-    margin-bottom: 20px;
+    &:not(:last-child) {
+      margin-bottom: 20px;
+    }
 
     &__info {
       margin-left: 20px;
@@ -111,6 +113,10 @@ export default {
     &__value {
       font-weight: bold;
       color: $main-color;
+    }
+
+    &__img {
+      max-height: 120px;
     }
   }
 </style>
