@@ -2,7 +2,9 @@
   <v-card
     max-width="300px"
     shaped
-    class="product-card">
+    class="product-card"
+    aria-label="View product"
+    @click="handleDetailsClick">
     <v-img
       :src="product.main_image"
       height="200px"/>
@@ -10,10 +12,6 @@
     <v-card-title>{{ product.name }}</v-card-title>
 
     <v-card-actions>
-      <v-btn
-        text
-        @click="handleDetailsClick">Details</v-btn>
-      <v-spacer/>
       <v-btn icon>
         <v-icon>mdi-heart</v-icon>
       </v-btn>

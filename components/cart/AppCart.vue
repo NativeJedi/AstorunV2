@@ -1,7 +1,7 @@
 <template>
   <app-dialog
     :visible="isOpened"
-    @close="TOGGLE_CART">
+    @close="TOGGLE_CART(false)">
     <div
       slot="title"
       class="basket-head">
@@ -71,6 +71,17 @@ export default {
 
   computed: {
     ...mapGetters('Cart', ['isOpened']),
+  },
+
+  watch: {
+    isOpened(opened) {
+      const { name: successStepName } = steps.AppCartOrderSuccess;
+
+      if (this.currentStep?.name === successStepName && opened) {
+        this.currentStep = steps.AppCartOrders;
+      }
+    },
+
   },
 
   methods: {

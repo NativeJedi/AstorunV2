@@ -5,5 +5,10 @@
 </template>
 
 <style lang="scss">
-@import '~/assets/styles/layout/main.scss';
+  html {
+    overflow-y: auto;
+  }
+  .v-application ul, .v-application ol {
+    padding-left: 0;
+  }
 </style>

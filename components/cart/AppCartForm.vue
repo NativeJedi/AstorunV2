@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapMutations } from 'vuex';
 import { COUNTRY_CODES } from '~/constants/countryCodes';
 import { EmailRule } from '~/validation/rules/email';
 import { RequiredRule } from '~/validation/rules/required';
@@ -89,6 +89,8 @@ export default {
   },
 
   methods: {
+    ...mapMutations('Cart', ['SET_ORDERS']),
+
     async handleSubmit() {
       const isValid = this.$refs.form.validate();
 
@@ -109,6 +111,7 @@ export default {
       this.isLoading = false;
 
       if (isSuccess) {
+        this.SET_ORDERS([]);
         this.$emit('next');
       }
     },

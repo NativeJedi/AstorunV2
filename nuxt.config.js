@@ -49,7 +49,7 @@ module.exports = {
   ],
   css: [
     'normalize.css/normalize.css',
-    // { src: 'assets/styles/layout/main.scss', lang: 'scss' },
+    { src: 'assets/styles/layout/main.scss', lang: 'scss' },
   ],
   extractCSS: true,
   modules: [

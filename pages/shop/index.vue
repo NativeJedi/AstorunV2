@@ -8,15 +8,7 @@
           v-for="category in categories"
           :key="category.id"
           class="shop-nav__item">
-          <nuxt-link
-            :to="localePath({
-              name: 'shop-category',
-              params: {
-                category: category.name,
-              },
-            })"
-            class="shop-nav__link"
-          >{{ $t(`filters.${category.name}`) }}</nuxt-link>
+          <TheCategoryCard :category="category"/>
         </li>
       </ul>
     </nav>
@@ -25,8 +17,13 @@
 
 <script>
 import { mapActions, mapGetters } from 'vuex';
+import TheCategoryCard from '~/pages/shop/components/TheCategoryCard';
 
 export default {
+
+  components: {
+    TheCategoryCard,
+  },
 
   layout: 'main',
 
@@ -47,23 +44,11 @@ export default {
 
 <style lang="scss">
 .shop-nav {
-  text-align: center;
-
-  &__item {
-    &:not(:last-child) {
-      margin-bottom: 10px;
-    }
-  }
-
-  &__link {
-    font-size: 20px;
-    color: $main-color;
-    text-transform: uppercase;
-    font-weight: 500;
-
-    &:hover {
-      text-decoration: underline;
-    }
+  &__list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 250px);
+    justify-content: center;
+    grid-gap: 24px;
   }
 }
 </style>

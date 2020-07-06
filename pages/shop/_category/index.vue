@@ -31,7 +31,7 @@
           class="product-grid"/>
 
         <div class="product-grid">
-          <product-card
+          <app-product-card
             v-for="product in products"
             :key="product.id"
             :product="product"
@@ -46,7 +46,7 @@
 import { mapActions, mapGetters } from 'vuex';
 import AppPagination from '~/components/AppPagination';
 import ProductLoader from './components/ProductLoader';
-import ProductCard from './components/ProductCard';
+import AppProductCard from './components/AppProductCard';
 
 const genders = [
   {
@@ -72,7 +72,7 @@ export default {
   components: {
     ProductLoader,
     AppPagination,
-    ProductCard,
+    AppProductCard,
   },
 
   data: () => ({
@@ -134,6 +134,7 @@ export default {
   display: grid;
   grid-template-columns: repeat(auto-fit, 300px);
   grid-gap: 30px;
+  justify-content: center;
 }
 
 .shop-title {

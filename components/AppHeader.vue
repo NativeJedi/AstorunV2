@@ -30,7 +30,7 @@
         icon
         color="primary"
         class="header__cart"
-        @click="TOGGLE_CART">
+        @click="TOGGLE_CART(true)">
         <v-icon>mdi-cart</v-icon>
       </v-btn>
 

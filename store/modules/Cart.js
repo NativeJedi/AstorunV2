@@ -30,7 +30,7 @@ const getters = {
 
 const mutations = {
   SET_ORDERS(state, orders) {
-    state.orders = orders;
+    setOrders.call(this, state, orders);
   },
 
   ADD_ORDER(state, order) {
@@ -47,8 +47,8 @@ const mutations = {
     setOrders.call(this, state, orders);
   },
 
-  TOGGLE_CART(state) {
-    state.isOpened = !state.isOpened;
+  TOGGLE_CART(state, isOpened = false) {
+    state.isOpened = isOpened;
   },
 
   CHANGE_QUANTITY(state, { quantity, id }) {

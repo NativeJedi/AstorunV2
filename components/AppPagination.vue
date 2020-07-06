@@ -67,7 +67,7 @@ export default {
 
   computed: {
     emptyRecords() {
-      return this.isLoaded && !this.records?.length;
+      return this.isLoaded && !this.records?.length && !this.isLoading;
     },
 
     pages() {
@@ -109,6 +109,12 @@ export default {
     }
     .v-pagination {
       margin-top: auto;
+    }
+
+    &__placeholder {
+      font-size: 22px;
+      text-align: center;
+      color: $placeholder-color;
     }
   }
 </style>
